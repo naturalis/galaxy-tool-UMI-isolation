@@ -22,10 +22,13 @@
 # The output BLAST file is copies to the expected lacation and removed.
 # A ZIP file is created of the generated fastA file and copied to the expected
 # location. After that the temporary storage directory is removed.
+
+SCRIPTDIR=$(dirname "$(readlink -f "$0")")
+
 getFormatFlow() {
     strDirectory=${fosOutput::-4}
     mkdir -p "${strDirectory}_temp"
-    python getUmiClusters.py -i ${fisInput} -o ${strDirectory}_temp/flTempCsv.csv \
+    python $SCRIPTDIR"/getUmiClusters.py" -i ${fisInput} -o ${strDirectory}_temp/flTempCsv.csv \
                       -z ${strDirectory}_temp/ \
                       -q ${strDirectory}_temp/flTempBlast.fasta \
                       -f ${disFormat} -p ${disProcess} -l ${disUmiLength} \
