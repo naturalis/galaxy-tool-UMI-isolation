@@ -25,7 +25,7 @@
 getFormatFlow() {
     strDirectory=${fosOutput::-4}
     mkdir -p "${strDirectory}_temp"
-    getUmiClusters.py -i ${fisInput} -o ${strDirectory}_temp/flTempCsv.csv \
+    python getUmiClusters.py -i ${fisInput} -o ${strDirectory}_temp/flTempCsv.csv \
                       -z ${strDirectory}_temp/ \
                       -q ${strDirectory}_temp/flTempBlast.fasta \
                       -f ${disFormat} -p ${disProcess} -l ${disUmiLength} \
