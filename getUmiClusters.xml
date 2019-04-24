@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tool id="getUmiClusters" name="Cluster On UMIs:" version="0.1.0">
-    <description>
+    <!--description>
         Use a python script to cluster all UMIs and output a tabular file, a
         BLAST file and a zip file.
-    </description>
+    </description-->
+    
+    <requirements>
+        <requirement type="package" version="0.24.2">pandas</requirement>
+        <requirement type="package" version="2.7">python</requirement>
+    </requirements>    
+    
     <!-- Call the getUmiClusters script, set input parameters according to user
          choices. -->
-    <command interpreter="bash">
-        getUmiClusters.sh -o ${fosOutputTabular} -z ${fosOutputZip}
+    <command><![CDATA[
+        bash '$__tool_directory__/getUmiClusters.sh' -o ${fosOutputTabular} -z ${fosOutputZip}
                           -q ${fosBlastFile} -p ${rbProcess}
                           -f ${fisInput.rbSingle} -l ${disUmiLength}
                           -s ${rbSearch} -a ${tfForward} -b ${tfReverse}
@@ -16,7 +22,7 @@
         #elif $fisInput.rbSingle == "fasta"
             -i $fisInput.fisSingleFasta
         #end if
-    </command>
+    ]]></command>
     <inputs>
         <!-- Catch the input file. -->
         <conditional name="fisInput">
