@@ -8,10 +8,6 @@
 # - sudo apt-get install python-pip
 # - sudo pip install pandas
 
-# Galaxy prequisites:
-# - sudo ln -s /path/to/folder/galaxy-tool-umi-clustering/getUmiClusters.py
-#              /usr/local/bin/getUmiClusters.py
-
 # Imports
 import os
 import sys
