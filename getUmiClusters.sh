@@ -26,20 +26,19 @@
 SCRIPTDIR=$(dirname "$(readlink -f "$0")")
 
 getFormatFlow() {
-    strDirectory=${fosOutput::-4}
-    mkdir -p "${strDirectory}_temp"
-    python $SCRIPTDIR"/getUmiClusters.py" -i ${fisInput} -o ${strDirectory}_temp/flTempCsv.csv \
-                      -z ${strDirectory}_temp/ \
-                      -q ${strDirectory}_temp/flTempBlast.fasta \
-                      -f ${disFormat} -p ${disProcess} -l ${disUmiLength} \
-                      -s ${disSearch} -a ${disForward} -b ${disReverse}
-    cat ${strDirectory}_temp/flTempCsv.csv > ${fosOutputTabular}
-    rm ${strDirectory}_temp/flTempCsv.csv
-    cat ${strDirectory}_temp/flTempBlast.fasta > ${fosBlastFile}
-    rm ${strDirectory}_temp/flTempBlast.fasta
-    zip -jqr ${strDirectory}_temp/flTempZip.zip ${strDirectory}_temp/*
-    cat ${strDirectory}_temp/flTempZip.zip > ${fosOutputZip}
-    rm -rf ${strDirectory}_temp
+  strDirectory_temp=$(mktemp -d /media/GalaxyData/database/files/XXXXXX)
+  python $SCRIPTDIR"/getUmiClusters.py" -i ${fisInput} -o ${strDirectory_temp}/flTempCsv.csv \
+                    -z ${strDirectory_temp}/ \
+                    -q ${strDirectory_temp}/flTempBlast.fasta \
+                    -f ${disFormat} -p ${disProcess} -l ${disUmiLength} \
+                    -s ${disSearch} -a ${disForward} -b ${disReverse}
+  cat ${strDirectory_temp}/flTempCsv.csv > ${fosOutputTabular}
+  rm ${strDirectory_temp}/flTempCsv.csv
+  cat ${strDirectory_temp}/flTempBlast.fasta > ${fosBlastFile}
+  rm ${strDirectory_temp}/flTempBlast.fasta
+  zip -jqr ${strDirectory_temp}/flTempZip.zip ${strDirectory_temp}/*
+  cat ${strDirectory_temp}/flTempZip.zip > ${fosOutputZip}
+  rm -rf ${strDirectory_temp}
 }
 
 # The main function.
@@ -59,7 +58,7 @@ while getopts ":i:o:z:q:p:f:l:s:a:b:vh" opt; do
         z)
             fosOutputZip=${OPTARG}
             ;;
-        q)  
+        q)
             fosBlastFile=${OPTARG}
             ;;
         p)
@@ -108,7 +107,7 @@ while getopts ":i:o:z:q:p:f:l:s:a:b:vh" opt; do
             echo "                       [fasta/fastq]"
             echo " -l                    The length of the UMI sequences"
             echo " -s                    Search UMIs at 5'-end [umi5],"
-            echo "                       3'-end [umi3] or at 5'-end and" 
+            echo "                       3'-end [umi3] or at 5'-end and"
             echo "                       3'-end [umidouble]"
             echo " -a                    The 5'-end search nucleotides"
             echo " -b                    The 3'-end search nucleotides"
