@@ -6,14 +6,6 @@ file can be used to identify all UMI clusters.  The zip file will contain fastA 
 unique UMI and contain reads associated with that UMI.
 
 # Getting started
-
-### Prerequisites
-Download and install the following software according to the following steps.
-```
-sudo apt-get install python-pip
-sudo pip install pandas
-```
-
 ### Installing
 Download and install the tool according to the following steps.
 ```
