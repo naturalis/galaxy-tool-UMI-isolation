@@ -7,24 +7,18 @@ unique UMI and contain reads associated with that UMI.
 
 # Getting started
 ### Installing
-Download and install the tool according to the following steps.
+Install the tool for use in Galaxy
+(user: **galaxy**)  
 ```
 cd /home/galaxy/Tools
+```
+```
 git clone https://github.com/naturalis/galaxy-tool-UMI-isolation
 chmod -R 755 galaxy-tool-UMI-isolation
 ```
-Continue with the tool installation
+Add the following line to /home/galaxy/galaxy/config/tool_conf.xml
 ```
-sudo mkdir -m 755 /home/galaxy/tools/directoryname
-sudo cp /home/Tools/galaxy-tool-UMI-isolation/getUmiClusters.sh /home/galaxy/tools/directoryname/getUmiClusters.sh
-sudo cp /home/Tools/galaxy-tool-UMI-isolation/getUmiClusters.xml /home/galaxy/tools/directoryname/getUmiClusters.xml
-```
-Edit the following file in order to make galaxy display the tool.
-```
-/home/galaxy/config/tool_conf.xml
-```
-```
-<tool file="airdentification/getUmiClusters.xml"/>
+<tool file="/home/galaxy/Tools/galaxy-tool-UMI-isolation/getUmiClusters.xml"/>
 ```
 
 ## Source(s)
