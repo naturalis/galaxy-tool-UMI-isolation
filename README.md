@@ -7,7 +7,7 @@ unique UMI and contain reads associated with that UMI.
 
 # Getting started
 ### Installing
-Install the tool for use in Galaxy
+Install the tool for use in Galaxy  
 (user: **galaxy**)  
 ```
 cd /home/galaxy/Tools
