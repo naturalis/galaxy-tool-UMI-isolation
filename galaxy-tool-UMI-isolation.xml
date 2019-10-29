@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tool id="galaxy-tool-UMI-isolation" name="Caltha" version="0.1.3">
+    <description>
+        A python package to process UMI tagged mixed amplicon metabarcoding data.
+    </description>
+    <requirements>
+        <requirement type="package" version="3.7.4">python</requirement>
+        <requirement type="package" version="2.14.1">vsearch</requirement>
+        <requirement type="package" version="0.1.3">caltha</requirement>
+    </requirements>
+    <!-- Call the Caltha package, set input parameters according to user
+         choices. -->
+    <command><![CDATA[
+        caltha -i ${fisInput.fisInputFile} -t ${fosOutputTabular} -z ${fosOutputZip} -b ${fosBlastFile} -f ${fisInput.rbSingle} -s ${rbSearch} -a ${rbApproach} -u ${disUmiLength} -p ${disIdentity} -c ${disAbundance} -w ${tfForward} -r ${tfReverse} -d /media/GalaxyData/database/files
+    ]]></command>
+    <inputs>
+        <!-- Catch the input file. -->
+        <conditional name="fisInput">
+            <param name="rbSingle" type="select"
+                   label="The format of the input file [fasta/fastq]."
+                   multiple="false">
+                <option value="fastq" selected="true">Fastq file</option>
+                <option value="fasta">Fasta file</option>
+            </param>
+            <when value="fastq">
+                <param name="fisInputFile" type="data" format="fastq"
+                       label="Fastq file."/>
+            </when>
+            <when value="fasta">
+                <param name="fisInputFile" type="data" format="fasta"
+                       label="Fasta file."/>
+            </when>
+        </conditional>
+        <!-- Catch the number of UMIs per read. -->
+        <param name="rbSearch" type="select"
+               label="Search UMIs at the 5'-end [umi5], 3'-end [umi3] or at the 5'-end and 3'-end [umidouble]."
+               multiple="false"
+               help="Searching with umi5 instructs the tool to only search for UMI's at the start of every read, searching with umi3 instructs the tool to only search for UMI's at the end of every read, while umidouble will instruct the tool to collect UMI's on both the start and end of every read">
+            <option value="umi5" selected="true">5'-end UMI</option>
+            <option value="umi3">3'-end UMI</option>
+            <option value="umidouble">Two end UMIs</option>
+        </param>
+        <!-- Catch the search approach. -->
+        <param name="rbApproach" type="select"
+               label="The UMI search approach [primer/adapter/zero]."
+               multiple="false"
+               help="The tool will use the following format: ADAPTER(F)-UMI(5')-PRIMER(F)-INSERT-PRIMER(R)-UMI(3')-ADAPTER(R).">
+            <option value="primer" selected="true">Primer search</option>
+            <option value="adapter">Adapter search</option>
+            <option value="zero">First position search</option>
+        </param>
+        <!-- Catch the search nucleotides and length. -->
+        <param name="disUmiLength" type="integer"
+               label="The length of the UMI sequence." value="0" min="0"
+               help="Enter a integer that represents the length of a single UMI."/>
+        <param name="disIdentity" type="float" value="0.97" min="0.1" max="1"
+               label="The identity percentage with which to perform the validation."/>
+        <param name="disAbundance" type="integer"
+               label="The minimum abundance of a read in order to be included during validation."
+               value="1" min="1" />
+        <param name="tfForward" size="50" type="text" value="NNNNNNNNNNNNNNN"
+               label="The 5'-end search nucleotides."/>
+        <param name="tfReverse" size="50" type="text" value="NNNNNNNNNNNNNNN"
+               label="The 3'-end search nucleotides."/>
+    </inputs>
+    <outputs>
+        <!-- Catch the output file. -->
+        <data format="tabular" name="fosOutputTabular"
+              label="$fisInput.fisInputFile.display_name TABULAR_FILE">
+        </data>
+        <data format="fasta" name="fosBlastFile"
+              label="$fisInput.fisInputFile.display_name BLAST_FILE">
+        </data>
+        <data format="zip" name="fosOutputZip"
+              label="$fisInput.fisInputFile.display_name PRE_ZIP_FILE">
+        </data>
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+        .. class:: infomark
+
+        A python package to process UMI tagged mixed amplicon metabarcoding data.
+
+        .. class:: infomark
+
+        The tabular file will contain all unique UMI nucleotides, a count of
+        the number of reads that are associated with that umi and a unique
+        identifier for every UMI.
+
+        .. class:: infomark
+
+        The BLAST file can be used to identify all UMI clusters.
+
+        .. class:: infomark
+
+        The pre zip file will contain fasta files for every unique UMI and contain
+        reads associated with that UMI, this zip file is created before VSEARCH
+        is used for final validation.
+
+        .. class:: warningmark
+
+        Every read in a fasta file should have a header starting with >.
+        Every read in a fastq file should have a header starting with @.
+        Every read in a fasta/fastq file should be on one line. For instance
+        they can not be "human readable" and have a "\\n" after every 80 characters.
+    </help>
+</tool>
