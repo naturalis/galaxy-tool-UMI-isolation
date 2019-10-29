@@ -1,5 +1,4 @@
 # galaxy-tool-UMI-isolation
-
 This repository contains a Galaxy specific .xml file that can be used to install
 Caltha on the Naturalis Galaxy instance.  
 A description and further text about Caltha can be found on the
