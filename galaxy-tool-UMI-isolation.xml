@@ -102,4 +102,8 @@
         Every read in a fasta/fastq file should be on one line. For instance
         they can not be "human readable" and have a "\\n" after every 80 characters.
     </help>
+    <citations>
+        <citation type="doi">10.1101/gr.4086505</citation>
+        <citation type="doi">10.5281/zenodo.3524165</citation>
+    </citations>
 </tool>
