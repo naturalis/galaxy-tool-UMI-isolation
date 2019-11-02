@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<tool id="galaxy-tool-UMI-isolation" name="Caltha" version="0.3">
+<tool id="galaxy-tool-UMI-isolation" name="Caltha" version="0.4">
     <requirements>
         <requirement type="package" version="3.7.4">python</requirement>
         <requirement type="package" version="2.14.1">vsearch</requirement>
-        <requirement type="package" version="0.3">caltha</requirement>
+        <requirement type="package" version="0.4">caltha</requirement>
     </requirements>
     <!-- Call the Caltha package, set input parameters according to user
          choices. -->
     <command><![CDATA[
-        caltha -i ${fisInput.fisInputFile} -t ${fosOutputTabular} -z ${fosOutputZip} -b ${fosBlastFile} -f ${fisInput.rbSingle} -s ${rbSearch} -a ${rbApproach} -u ${disUmiLength} -p ${disIdentity} -c ${disAbundance} -w ${tfForward} -r ${tfReverse} -d /media/GalaxyData/database/files
+        caltha -i ${fisInput.fisInputFile} -t ${fosOutputTabular} -z ${fosOutputZip} -b ${fosBlastFile} -f ${fisInput.rbSingle} -s ${rbSearch} -a ${rbApproach} -u ${disUmiLength} -y ${disIdentity} -c ${disAbundance} -w ${tfForward} -r ${tfReverse} -d /media/GalaxyData/database/files
     ]]></command>
     <inputs>
         <!-- Catch the input file. -->
         <conditional name="fisInput">
             <param name="rbSingle" type="select"
-                   label="The format of the input file [fasta/fastq]."
+                   label="The format of the input file [fasta/fastq/zipfasta/zipfastq]."
                    multiple="false">
-                <option value="fastq" selected="true">Fastq file</option>
                 <option value="fasta">Fasta file</option>
+                <option value="fastq" selected="true">Fastq file</option>
+                <option value="zipfasta">Zip with fasta files</option>
+                <option value="zipfastq">Zip with fastq files</option>
             </param>
+            <when value="fasta">
+                <param name="fisInputFile" type="data" format="fasta"
+                       label="Fasta file."/>
+            </when>
             <when value="fastq">
                 <param name="fisInputFile" type="data" format="fastq"
                        label="Fastq file."/>
             </when>
-            <when value="fasta">
-                <param name="fisInputFile" type="data" format="fasta"
-                       label="Fasta file."/>
+            <when value="zipfasta">
+                <param name="fisInputFile" type="data" format="zip"
+                       label="Zip with fasta files."/>
+            </when>
+            <when value="zipfastq">
+                <param name="fisInputFile" type="data" format="zip"
+                       label="Zip with fastq files."/>
             </when>
         </conditional>
         <!-- Catch the number of UMIs per read. -->
@@ -62,14 +72,14 @@
     </inputs>
     <outputs>
         <!-- Catch the output file. -->
-        <data format="tabular" name="fosOutputTabular"
-              label="$fisInput.fisInputFile.display_name TABULAR_FILE">
+        <data format="zip" name="fosOutputTabular"
+              label="$fisInput.fisInputFile.display_name TABULAR_ZIP_FILE">
         </data>
-        <data format="fasta" name="fosBlastFile"
-              label="$fisInput.fisInputFile.display_name BLAST_FILE">
+        <data format="zip" name="fosBlastFile"
+              label="$fisInput.fisInputFile.display_name BLAST_ZIP_FILE">
         </data>
         <data format="zip" name="fosOutputZip"
-              label="$fisInput.fisInputFile.display_name PRE_ZIP_FILE">
+              label="$fisInput.fisInputFile.display_name PRE_VALIDATION_ZIP_FILE">
         </data>
     </outputs>
     <tests>
@@ -78,22 +88,6 @@
         .. class:: infomark
 
         A python package to process UMI tagged mixed amplicon metabarcoding data.
-
-        .. class:: infomark
-
-        The tabular file will contain all unique UMI nucleotides, a count of
-        the number of reads that are associated with that umi and a unique
-        identifier for every UMI.
-
-        .. class:: infomark
-
-        The BLAST file can be used to identify all UMI clusters.
-
-        .. class:: infomark
-
-        The pre zip file will contain fasta files for every unique UMI and contain
-        reads associated with that UMI, this zip file is created before VSEARCH
-        is used for final validation.
 
         .. class:: warningmark
 
