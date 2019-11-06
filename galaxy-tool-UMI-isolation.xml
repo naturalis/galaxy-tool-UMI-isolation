@@ -8,7 +8,7 @@
     <!-- Call the Caltha package, set input parameters according to user
          choices. -->
     <command><![CDATA[
-        caltha -i ${fisInput.fisInputFile} -t ${fosOutputTabular} -z ${fosOutputZip} -b ${fosBlastFile} -f ${fisInput.rbSingle} -s ${rbSearch} -a ${rbApproach} -u ${disUmiLength} -y ${disIdentity} -c ${disAbundance} -w ${tfForward} -r ${tfReverse} -d /media/GalaxyData/database/files
+        caltha -i ${fisInput.fisInputFile} -t ${fosOutputTabular} -z ${fosOutputZip} -b ${fosBlastFile} -f ${fisInput.rbSingle} -s ${rbSearch} -a ${rbApproach} -u ${disUmiLength} -y ${disIdentity} -c ${disAbundance} -w ${tfForward} -r ${tfReverse} -p 8 -d /media/GalaxyData/database/files
     ]]></command>
     <inputs>
         <!-- Catch the input file. -->
