@@ -1,11 +1,11 @@
 # galaxy-tool-UMI-isolation
-This repository contains a Galaxy specific .xml file that can be used to install
+This repository contains a Galaxy specific xml file that can be used to install
 Caltha on the Naturalis Galaxy instance.  
 A description and further text about Caltha can be found on the
 main [repository](https://github.com/JasperBoom/caltha).  
 
 ## Source(s)
-* __Boom J__, Caltha. 2019.  
+* __Boom J__, Caltha.  
   [![DOI](https://zenodo.org/badge/216898964.svg)](https://zenodo.org/badge/latestdoi/216898964)  
   GitHub repository: https://github.com/JasperBoom/caltha
 * __Giardine B, Riemer C, Hardison RC, Burhans R, Elnitski L, Shah P__,  
@@ -28,3 +28,20 @@ main [repository](https://github.com/JasperBoom/caltha).
 
 ## Author(s)
 * [Jasper Boom](https://github.com/JasperBoom)
+
+```
+Copyright (C) 2018 Jasper Boom
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+```
