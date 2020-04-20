@@ -5,7 +5,7 @@ associated with that UMI and a read that represents the sequences associated wit
 The BLAST file can be used to identify all UMI clusters.  The zip file will contain fastA files for every\
 unique UMI and contain reads associated with that UMI.
 
-# About this repository
+## About this repository
 This repo is kept as a backup to guarantee continuity for Naturalis.\
 An author maintained verion of this tool can be found here:\
 [https://github.com/JasperBoom/galaxy-tools-umi-isolation](https://github.com/JasperBoom/galaxy-tools-umi-isolation)\
