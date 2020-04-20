@@ -1,9 +1,17 @@
 # galaxy-tool-UMI-isolation
-Use a python script to accumulate all UMIs and output a tabular file, a BLAST file and a zip file. 
-The tabular file will contain all unique UMI nucleotides, a count of the number of reads that are 
-associated with that UMI and a read that represents the sequences associated with that umi. The BLAST 
-file can be used to identify all UMI clusters.  The zip file will contain fastA files for every 
-unique UMI and contain reads associated with that UMI.
+Use a python script to accumulate all UMIs and output a tabular file, a BLAST file and a zip file.\
+The tabular file will contain all unique UMI nucleotides, a count of the number of reads that are\
+associated with that UMI and a read that represents the sequences associated with that umi.\
+The BLAST file can be used to identify all UMI clusters.  The zip file will contain fastA files for every\
+unique UMI and contain reads associated with that UMI.\
+
+# About this repository
+This repo is kept as a backup to guarantee continuity for Naturalis.\
+An author maintained verion of this tool can be found here:\
+[https://github.com/JasperBoom/galaxy-tools-umi-isolation](https://github.com/JasperBoom/galaxy-tools-umi-isolation)\
+Active development on this tool is done in the Caltha package:\
+[https://github.com/JasperBoom/caltha](https://github.com/JasperBoom/caltha)
+
 
 # Getting started
 ### Installing
@@ -18,7 +26,7 @@ chmod -R 755 galaxy-tool-UMI-isolation
 ```
 Add the following line to /home/galaxy/galaxy/config/tool_conf.xml
 ```
-<tool file="/home/galaxy/Tools/galaxy-tool-UMI-isolation/getUmiClusters.xml"/>
+<tool file="/home/galaxy/Tools/galaxy-tool-UMI-isolation/getUmiIsolation.xml"/>
 ```
 
 ## Source(s)
