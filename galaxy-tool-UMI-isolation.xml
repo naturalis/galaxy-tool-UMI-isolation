@@ -1,3 +1,19 @@
+<!--
+Copyright (C) 2018 Jasper Boom
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License version 3 as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+-->
+
 <?xml version="1.0" encoding="utf-8"?>
 <tool id="galaxy-tool-UMI-isolation" name="Caltha" version="0.4">
     <requirements>
@@ -97,7 +113,6 @@
         they can not be "human readable" and have a "\\n" after every 80 characters.
     </help>
     <citations>
-        <citation type="doi">10.5281/zenodo.3524165</citation>
         <citation type="doi">10.1101/gr.4086505</citation>
         <citation type="doi">10.7717/peerj.2584</citation>
     </citations>
