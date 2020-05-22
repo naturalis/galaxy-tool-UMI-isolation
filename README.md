@@ -29,7 +29,6 @@ Install the tool for use in Galaxy
 
 cd /home/galaxy/Tools
 
-
 git clone https://github.com/naturalis/galaxy-tool-UMI-isolation
 chmod -R 755 galaxy-tool-UMI-isolation
 
