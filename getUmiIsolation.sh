@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
-# Copyright ©2007 Free Software Foundation, Inc.
 
-# Author: Jasper Boom
-
-# Prequisites:
-# - sudo apt-get install python3
-# - sudo apt-get install python3-pip
-# - sudo pip3 install pandas
-# - sudo apt-get install libargtable2-dev
-# - Download VSEARCH from GitHub
-# - Unpack downloaded file
-# - sudo ./autogen.sh
-# - sudo ./configure && sudo make && sudo make install
+# sanity check
+printf "Conda env: $CONDA_DEFAULT_ENV\n"
+printf "Python version: $(python --version |  awk '{print $2}')\n"
+printf "Pandas version: $(conda list | egrep pandas | awk '{print $2}')\n"
+printf "Vsearch version: $(conda list | egrep vsearch | awk '{print $2}')\n"
+printf "Unzip version: $(unzip -v | head -n1 | awk '{print $2}')\n"
+printf "Bash version: ${BASH_VERSION}\n\n"
 
 # The getFormatFlow function.
 # This function creates two temporary storage directories in the output directory.
@@ -20,9 +15,10 @@
 # The output BLAST file is copies to the expected lacation and removed.
 # A zip file is created of the generated preVSEARCH fastA file and copied to
 # the expected location. After that the temporary storage directories are removed.
+
 getFormatFlow() {
     strScriptDir=$(dirname "$(readlink -f "$0")")
-    strDirectory=$(mktemp -d /media/GalaxyData/database/files/XXXXXX)
+    strDirectory=$(mktemp -d /data/files/XXXXXX)
     mkdir -p "${strDirectory}_temp"
     mkdir -p "${strDirectory}_clusterCheck"
     python3 $strScriptDir"/getUmiIsolation.py" -i ${fisInput} \
