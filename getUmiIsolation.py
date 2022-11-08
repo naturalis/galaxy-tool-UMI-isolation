@@ -1,17 +1,4 @@
 #!/usr/bin/env python3
-# Copyright ©2001-2019 Python Software Foundation
-
-# Author: Jasper Boom
-
-# Prequisites:
-# - sudo apt-get install python3
-# - sudo apt-get install python3-pip
-# - sudo pip3 install pandas
-# - sudo apt-get install libargtable2-dev
-# - Download VSEARCH from GitHub
-# - Unpack downloaded file
-# - sudo ./autogen.sh
-# - sudo ./configure && sudo make && sudo make install
 
 # Imports
 import os
