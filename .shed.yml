@@ -1,0 +1,13 @@
+name: naturalis_umi_isolation
+owner:  luka
+description: "Accumulate all UMIs and output a tabular file, a BLAST file (fasta) and a zip file." 
+long_description: |
+  "Accumulate all UMIs and output a tabular file, a BLAST file (fasta) and a zip file.".
+remote_repository_url: https://github.com/naturalis/galaxy-tool-UMI-isolation.git
+homepage_url: https://github.com/naturalis/galaxy-tool-UMI-isolation.git
+type: unrestricted
+categories:
+   - "Fasta Manipulation"
+auto_tool_repositories:
+  name_template: naturalis_umi_isolation
+  description_template: naturalis_umi_isolation
